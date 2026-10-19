@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: mijv-shopping
+#    必须有吗
+#  结论：不是必须的！可以删掉！
+#  我给你说清楚：
+#  单纯用数据库 + Redis，这个配置完全没用
+#  只有你用到 微服务、注册中心（Nacos/Eureka）、配置中心 时才需要
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/mijv_shopping?userSSL=false&serverTimezone=UTC
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password: 123456
+      database: 0
+    spring:
+      rabbitmq:
+        host: localhost
+        port: 5672
+        username: guest
+        password: guest
+        virtual-host: /
+        listener:
+          simple:
+            acknowledge-mode: manual   # 消费者手动ACK
+            prefetch: 1
+server:
+  port: 8081
+#控制台输出sql
+#mybatis-plus:
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
